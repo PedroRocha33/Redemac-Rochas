@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhe Conosco | Redemac Rochas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/about.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <style>
+        /* Career Specific Styles */
+        .career-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .career-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            background: #fff;
+            color: #666;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .file-upload-label:hover {
+            border-color: #e74c3c;
+            background: #f8f9fa;
+        }
+
+        .file-upload-label i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .file-selected {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: #e8f5e8;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            color: #2e7d32;
+        }
+
+        .benefits-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Open Positions Section */
+        .positions-section {
+            background: #f8f9fa;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .position-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .position-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .position-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .position-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .position-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .position-requirements {
+            margin-bottom: 1.5rem;
+        }
+
+        .position-requirements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .position-requirements li {
+            padding: 0.25rem 0;
+            color: #666;
+        }
+
+        .position-requirements li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Company Culture Section */
+        .culture-section {
+            text-align: center;
+        }
+
+        .culture-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .culture-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .culture-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .culture-card:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .culture-card:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .culture-card:nth-child(4) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        /* Required asterisk */
+        .required {
+            color: #e74c3c;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .career-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .culture-values {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-building"></i> 
+                    Redemac <span>Rochas</span>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="O que você procura?">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        <span>Carrinho</span>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orçamento</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container">
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="produtos.html" class="nav-link">Produtos <i class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="calculadoras.html" class="nav-link">Calculadoras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Catálogo de Cores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">Trabalhe Conosco</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Career Hero Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Trabalhe Conosco</h1>
+                <p class="section-subtitle">Faça parte da nossa equipe e construa o futuro conosco! Estamos sempre em busca de talentos que compartilhem nossa paixão pela excelência.</p>
+            </div>
+            
+            <div class="career-grid">
+                <!-- Career Form -->
+                <div class="career-form">
+                    <h3 style="margin-bottom: 1.5rem; color: #2c3e50;">Envie seu Currículo</h3>
+                    <form id="careerForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="position">Área de Interesse <span class="required">*</span></label>
+                            <select id="position" name="position" required>
+                                <option value="">Selecione a área</option>
+                                <option value="vendas">Vendas</option>
+                                <option value="almoxarifado">Almoxarifado</option>
+                                <option value="entrega">Entrega</option>
+                                <option value="administrativo">Administrativo</option>
+                                <option value="financeiro">Financeiro</option>
+                                <option value="rh">Recursos Humanos</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="ti">Tecnologia da Informação</option>
+                                <option value="gerencia">Gerência</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Experiência Profissional</label>
+                            <textarea id="experience" name="experience" placeholder="Descreva brevemente sua experiência profissional relevante..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="curriculum">Currículo <span class="required">*</span></label>
+                            <div class="file-upload">
+                                <input type="file" id="curriculum" name="curriculum" accept=".pdf,.doc,.docx" required>
+                                <label for="curriculum" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Clique para selecionar seu currículo (PDF, DOC, DOCX)</span>
+                                </label>
+                                <div id="fileSelected" class="file-selected" style="display: none;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="availability">Disponibilidade <span class="required">*</span></label>
+                            <select id="availability" name="availability" required>
+                                <option value="">Selecione sua disponibilidade</option>
+                                <option value="imediata">Imediata</option>
+                                <option value="15-dias">15 dias</option>
+                                <option value="30-dias">30 dias</option>
+                                <option value="45-dias">45 dias</option>
+                                <option value="60-dias">60 dias</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="salary">Pretensão Salarial</label>
+                            <input type="text" id="salary" name="salary" placeholder="Ex: R$ 2.500,00">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensagem Adicional</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos por que você gostaria de trabalhar na Redemac Rochas..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Enviar Currículo
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Benefits Information -->
+                <div class="benefits-info">
+                    <div class="benefit-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Plano de Saúde</h3>
+                        <p>Cobertura médica e odontológica para você e sua família</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Desenvolvimento</h3>
+                        <p>Programas de treinamento e capacitação profissional</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Flexibilidade</h3>
+                        <p>Horários flexíveis e ambiente de trabalho colaborativo</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Reconhecimento</h3>
+                        <p>Programa de bonificações e reconhecimento por desempenho</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions Section -->
+    <section class="section positions-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vagas em Aberto</h2>
+                <p class="section-subtitle">Confira as oportunidades disponíveis e candidate-se às posições que mais combinam com seu perfil.</p>
+            </div>
+            
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h3>Vendedor(a) Externo(a)</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> São Paulo/SP</span>
+                        <span><i class="fas fa-clock"></i> CLT</span>
+                        <span><i class="fas fa-dollar-sign"></i> A combinar</span>
+                    </div>
+                    <div class="position-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Ensino médio completo</li>
+                            <li>Experiência em vendas</li>
+                            <li>CNH categoria B</li>
+                            <li>Conhecimento em materiais de construção</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Candidatar-se</a>
+                </div>
+                
+                <div class="position-card">
+                    <h3>Auxiliar de Almoxarifado</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> São Paulo/SP</span>
+                        <span><i class="fas fa-clock"></i> CLT</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 1.800,00</span>
+                    </div>
+                    <div class="position-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Ensino médio completo</li>
+                            <li>Experiência em estoque</li>
+                            <li>Conhecimento básico em informática</li>
+                            <li>Disponibilidade de horário</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Candidatar-se</a>
+                </div>
+                
+                <div class="position-card">
+                    <h3>Motorista Entregador</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> São Paulo/SP</span>
+                        <span><i class="fas fa-clock"></i> CLT</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 2.200,00</span>
+                    </div>
+                    <div class="position-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>CNH categoria D</li>
+                            <li>Experiência com veículos pesados</li>
+                            <li>Curso MOPP atualizado</li>
+                            <li>Conhecimento da região metropolitana</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Candidatar-se</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Culture Section -->
+    <section class="section culture-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossa Cultura</h2>
+                <p class="section-subtitle">Conheça os valores que guiam nosso ambiente de trabalho e fazem da Redemac Rochas um lugar especial para crescer profissionalmente.</p>
+            </div>
+            
+            <div class="culture-values">
+                <div class="culture-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Trabalho em Equipe</h3>
+                    <p>Acreditamos na força da colaboração e no poder das ideias compartilhadas.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Inovação</h3>
+                    <p>Incentivamos a criatividade e a busca por soluções inovadoras.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Crescimento</h3>
+                    <p>Oferecemos oportunidades reais de desenvolvimento e progressão na carreira.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Equilíbrio</h3>
+                    <p>Valorizamos o equilíbrio entre vida pessoal e profissional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Fazer Parte da Nossa Equipe?</h2>
+                <p>Não encontrou a vaga ideal? Envie seu currículo mesmo assim! Estamos sempre em busca de talentos excepcionais.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-secondary">Enviar Currículo</a>
+                    <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Fale com RH</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form submission handler
+        document.getElementById('careerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Simple validation
+            const requiredFields = ['fullName', 'email', 'phone', 'position', 'curriculum', 'availability'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const value = formData.get(field);
+                if (!value || (field === 'curriculum' && !value.name)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Check file size (5MB limit)
+            const file = formData.get('curriculum');
+            if (file && file.size > 5 * 1024 * 1024) {
+                alert('O arquivo deve ter no máximo 5MB.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Currículo enviado com sucesso! Entraremos em contato em breve.');
+            this.reset();
+            document.getElementById('fileSelected').style.display = 'none';
+        });
+
+        // File upload handler
+        document.getElementById('curriculum').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileSelected = document.getElementById('fileSelected');
+            
+            if (file) {
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                fileSelected.innerHTML = `<i class="fas fa-file"></i> ${file.name} (${fileSize} MB)`;
+                fileSelected.style.display = 'block';
+            } else {
+                fileSelected.style.display = 'none';
+            }
+        });
+
+        // Phone mask
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '($1) $2');
+            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+            value = value.replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3');
+            e.target.value = value;
+        });
+
+        // Salary mask
+        document.getElementById('salary').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d)(\d{2})$/, '$1,$2');
+            value = value.replace(/(?=(\d{3})+(\D))\B/g, '.');
+            e.target.value = 'R$ ' + value;
+        });
+
+        // Position cards click handlers
+        document.querySelectorAll('.position-card .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Scroll to form and pre-select position
+                const positionTitle = this.closest('.position-card').querySelector('h3').textContent;
+                document.querySelector('#careerForm').scrollIntoView({ behavior: 'smooth' });
+                
+                // Auto-select the position in the form
+                setTimeout(() => {
+                    const positionSelect = document.getElementById('position');
+                    if (positionTitle.includes('Vendedor')) {
+                        positionSelect.value = 'vendas';
+                    } else if (positionTitle.includes('Almoxarifado')) {
+                        positionSelect.value = 'almoxarifado';
+                    } else if (positionTitle.includes('Motorista')) {
+                        positionSelect.value = 'entrega';
+                    }
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

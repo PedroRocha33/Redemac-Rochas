@@ -30,6 +30,17 @@
             color: white;
             padding: 1rem 2rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .logo {
@@ -44,35 +55,38 @@
             margin-left: 0.5rem;
         }
         
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
+        .cart-button {
+            background-color: var(--primary-color);
             color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--accent-color);
-        }
-        
-        nav ul li a.active {
-            color: var(--primary-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .cart-button:hover {
+            background-color: #d12c39;
+            transform: translateY(-2px);
+        }
+        
+        .cart-count {
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
         }
         
         .container {
@@ -83,7 +97,7 @@
         
         .page-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: var(--secondary-color);
             font-size: 2.5rem;
             position: relative;
@@ -100,105 +114,345 @@
             background-color: var(--primary-color);
         }
         
-        .page-description {
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #666;
-            line-height: 1.6;
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
         }
         
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .category-card {
+        .filter-btn {
             background-color: white;
-            border-radius: 10px;
+            color: var(--secondary-color);
+            border: 2px solid var(--accent-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
+            transition: all 0.3s;
+            position: relative;
         }
         
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
         
-        .category-image {
+        .product-image {
+            width: 100%;
             height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
+            overflow: hidden;
         }
         
-        .category-image::before {
-            content: "";
+        .product-badge {
             position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-primary:hover {
+            background-color: #d12c39;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 0.8rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        /* Modal do Carrinho */
+        .cart-modal {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
         }
         
-        .category-content {
-            padding: 1.5rem;
-        }
-        
-        .category-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
+        .cart-modal.active {
             display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-content {
+            background-color: white;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .cart-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
         
-        .category-title i {
-            margin-right: 0.5rem;
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .close-btn:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .cart-body {
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .cart-item-price {
             color: var(--primary-color);
+            font-weight: 600;
         }
         
-        .category-description {
-            color: #666;
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            background-color: var(--accent-color);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        .quantity {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .remove-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .remove-btn:hover {
+            background-color: #ff3742;
+        }
+        
+        .cart-footer {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
             margin-bottom: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.5;
         }
         
-        .btn {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
+        .checkout-btn {
+            width: 100%;
             background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: 500;
             transition: background-color 0.3s;
-            text-decoration: none;
         }
         
-        .btn:hover {
+        .checkout-btn:hover {
             background-color: #d12c39;
         }
         
-        .category-items {
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
-            color: #777;
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
         }
         
-        .category-items span {
-            font-weight: 600;
-            color: var(--dark-color);
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
         
         footer {
@@ -211,275 +465,87 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        
-        .footer-section p, .footer-section a {
-            color: #ddd;
-            margin-bottom: 0.5rem;
-            display: block;
-            text-decoration: none;
-        }
-        
-        .footer-section a:hover {
-            color: var(--primary-color);
-        }
-        
-        .bottom-footer {
             text-align: center;
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #aaa;
-            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            .categories {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1.5rem;
             }
             
-            .category-image {
-                height: 150px;
+            .filters {
+                gap: 0.5rem;
             }
             
-            .category-title {
-                font-size: 1.2rem;
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
             
-            .footer-content {
-                flex-direction: column;
+            .cart-content {
+                width: 95%;
+                margin: 1rem;
             }
         }
     </style>
 </head>
 <body>
-   <header>
-        <!-- Top Bar
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-contact">
-                    <a href="tel:+551234567890"><i class="fas fa-phone"></i> (12) 3456-7890</a>
-                    <a href="mailto:contato@redemacrochas.com.br"><i class="fas fa-envelope"></i> contato@redemacrochas.com.br</a>
-                </div>
-                <div class="top-bar-socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                🏗️ Redemac <span>Rochas</span>
             </div>
-        </div> -->
-        
-        <!-- Main Header -->
-        <div class="main-header">
-            <div class="container">
-                <div class="logo">
-                    <i class="fas fa-building"></i> 
-                    Redemac <span>Rochas</span>
-                </div>
-                
-                <div class="search-bar">
-                    <input type="text" placeholder="O que você procura?">
-                    <button><i class="fas fa-search"></i></button>
-                </div>
-                
-                <div class="header-actions">
-                    <a href="#">
-                        <i class="fas fa-heart"></i>
-                        <span>Carrinho</span>
-                    </a>
-                    <a href="#">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>Nosso Contato</span>
-                    </a>
-                </div>
-            </div>
+            <button class="cart-button" onclick="toggleCart()">
+                🛒 Carrinho
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
         </div>
-        
-        <!-- Navigation -->
-        <nav>
-            <div class="container">
-                <div class="nav-menu">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="sobre.html" class="nav-link">Sobre Nós</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="produtos.html" class="nav-link">Produtos <i class="fas fa-chevron-down"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="calculadoras.html" class="nav-link">Calculadoras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="catalogo-de-cores.html" class="nav-link">Catálogo de Cores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contato</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
     </header>
     
     <div class="container">
         <h1 class="page-title">Nossos Produtos</h1>
-        <p class="page-description">
-            Na Redemac Rochas, oferecemos uma ampla variedade de produtos para atender todas as suas necessidades de construção e decoração. Explore nossas categorias e encontre exatamente o que você precisa para seu projeto.
-        </p>
         
-        <div class="categories">
-            <a href="#materials" class="category-card">
-                <div class="category-image" style="background-image: url('/api/placeholder/400/300')"></div>
-                <div class="category-content">
-                    <h2 class="category-title"><i>🏗️</i> Materiais de Construção</h2>
-                    <p class="category-description">Tudo o que você precisa para construir ou reformar sua casa. Desde fundação até acabamento.</p>
-                    <p class="category-items"><span>+500</span> produtos disponíveis</p>
-                    <button class="btn">Ver Produtos</button>
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+            <button class="filter-btn" onclick="filterProducts('construcao')">Construção</button>
+            <button class="filter-btn" onclick="filterProducts('acabamento')">Acabamento</button>
+            <button class="filter-btn" onclick="filterProducts('eletrica')">Elétrica</button>
+            <button class="filter-btn" onclick="filterProducts('hidraulica')">Hidráulica</button>
+            <button class="filter-btn" onclick="filterProducts('ferramentas')">Ferramentas</button>
+        </div>
+        
+        <div class="products-grid" id="products-grid">
+            <!-- Produtos serão inseridos aqui via JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Modal do Carrinho -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 class="cart-title">Meu Carrinho</h2>
+                <button class="close-btn" onclick="toggleCart()">×</button>
+            </div>
+            <div class="cart-body" id="cart-body">
+                <!-- Itens do carrinho serão inseridos aqui -->
+            </div>
+            <div class="cart-footer" id="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 0,00</span>
                 </div>
-            </a>
-            
-            <a href="#finishing" class="category-card">
-                <div class="category-image" style="background-image: url('/api/placeholder/400/300')"></div>
-                <div class="category-content">
-                    <h2 class="category-title"><i>✨</i> Acabamento</h2>
-                    <p class="category-description">Dê o toque final ao seu projeto com nossa linha completa de produtos de acabamento de alta qualidade.</p>
-                    <p class="category-items"><span>+300</span> produtos disponíveis</p>
-                    <button class="btn">Ver Produtos</button>
-                </div>
-            </a>
-            
-            <a href="#bazaar" class="category-card">
-                <div class="category-image" style="background-image: url('/api/placeholder/400/300')"></div>
-                <div class="category-content">
-                    <h2 class="category-title"><i>🏠</i> Bazar</h2>
-                    <p class="category-description">Utensílios, decoração e tudo mais para deixar sua casa mais bonita e funcional.</p>
-                    <p class="category-items"><span>+200</span> produtos disponíveis</p>
-                    <button class="btn">Ver Produtos</button>
-                </div>
-            </a>
-            
-            <a href="#pool" class="category-card">
-                <div class="category-image" style="background-image: url('/api/placeholder/400/300')"></div>
-                <div class="category-content">
-                    <h2 class="category-title"><i>🏊</i> Produtos para Piscina</h2>
-                    <p class="category-description">Tudo para a instalação, manutenção e diversão na sua piscina. Produtos de qualidade para água cristalina.</p>
-                    <p class="category-items"><span>+150</span> produtos disponíveis</p>
-                    <button class="btn">Ver Produtos</button>
-                </div>
-            </a>
+                <button class="checkout-btn" onclick="checkout()">Finalizar Compra</button>
+            </div>
         </div>
     </div>
     
     <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-column">
-                        <h3>Sobre a Redemac Rochas</h3>
-                        <p>Somos uma loja de materiais de construção comprometida com a qualidade dos produtos e excelência no atendimento. Há mais de 15 anos no mercado, ajudamos a construir sonhos.</p>
-                        <div class="footer-socials">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Links Rápidos</h3>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Sobre Nós</a></li>
-                            <li><a href="#">Produtos</a></li>
-                            <li><a href="#">Serviços</a></li>
-                            <li><a href="#">Projetos</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contato</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Categorias</h3>
-                        <ul>
-                            <li><a href="#">Materiais Básicos</a></li>
-                            <li><a href="#">Acabamentos</a></li>
-                            <li><a href="#">Elétrica</a></li>
-                            <li><a href="#">Hidráulica</a></li>
-                            <li><a href="#">Ferramentas</a></li>
-                            <li><a href="#">Tintas</a></li>
-                            <li><a href="#">Piscinas</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Contato</h3>
-                        <ul class="footer-contact">
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <p>Rua da barca, 519</p>
-                                    <p>Barreto - Triunfo/RS</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-phone"></i>
-                                <div>
-                                    <p>(51) 3654-7164</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <p>contato@redemacrochas.com.br</p>
-                                    <p>vendas@redemacrochas.com.br</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <p>Segunda a Sexta: 8h às 18h</p>
-                                    <p>Sábado: 8h às 12h</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <div class="container">
-                    <p>&copy; 2025 Redemac Rochas. Todos os direitos reservados. Desenvolvido por <a href="#">Pedro Rocha</a></p>
-                </div>
-            </div>
-        </footer>
-    <script>
-        // Código para tratamento de cliques nas categorias
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                const category = this.getAttribute('href').substring(1);
-                alert(`Você selecionou a categoria: ${category}\nEm uma implementação real, você seria redirecionado para a página de produtos desta categoria.`);
-                // Aqui você adicionaria o código para navegar para a página de produtos específica
-            });
-        });
-    </script>
+        <div class="footer-content">
+            <p>&copy; 2025 Redemac Rochas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="scripts/products.js"></script>
 </body>
 </html>
+    
