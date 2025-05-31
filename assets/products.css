@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Redemac Rochas</title>
-    <style>
+
         :root {
             --primary-color: #e63946;
             --secondary-color: #1d3557;
@@ -488,64 +482,4 @@
                 margin: 1rem;
             }
         }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                🏗️ Redemac <span>Rochas</span>
-            </div>
-            <button class="cart-button" onclick="toggleCart()">
-                🛒 Carrinho
-                <span class="cart-count" id="cart-count">0</span>
-            </button>
-        </div>
-    </header>
-    
-    <div class="container">
-        <h1 class="page-title">Nossos Produtos</h1>
-        
-        <div class="filters">
-            <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
-            <button class="filter-btn" onclick="filterProducts('construcao')">Construção</button>
-            <button class="filter-btn" onclick="filterProducts('acabamento')">Acabamento</button>
-            <button class="filter-btn" onclick="filterProducts('eletrica')">Elétrica</button>
-            <button class="filter-btn" onclick="filterProducts('hidraulica')">Hidráulica</button>
-            <button class="filter-btn" onclick="filterProducts('ferramentas')">Ferramentas</button>
-        </div>
-        
-        <div class="products-grid" id="products-grid">
-            <!-- Produtos serão inseridos aqui via JavaScript -->
-        </div>
-    </div>
-    
-    <!-- Modal do Carrinho -->
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2 class="cart-title">Meu Carrinho</h2>
-                <button class="close-btn" onclick="toggleCart()">×</button>
-            </div>
-            <div class="cart-body" id="cart-body">
-                <!-- Itens do carrinho serão inseridos aqui -->
-            </div>
-            <div class="cart-footer" id="cart-footer">
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="cart-total">R$ 0,00</span>
-                </div>
-                <button class="checkout-btn" onclick="checkout()">Finalizar Compra</button>
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Redemac Rochas. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-    <script src="scripts/products.js"></script>
-</body>
-</html>
     

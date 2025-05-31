@@ -34,3 +34,25 @@
                     });
                 });
             });
+
+             // Funcionalidade opcional para os pontos de navegação
+        const dots = document.querySelectorAll('.nav-dot');
+        let currentDot = 0;
+
+        setInterval(() => {
+            dots[currentDot].classList.remove('active');
+            currentDot = (currentDot + 1) % dots.length;
+            dots[currentDot].classList.add('active');
+        }, 5000);
+
+        // Pausar animação ao hover
+        const track = document.querySelector('.carousel-track');
+        const container = document.querySelector('.carousel-container');
+
+        container.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
+
+        container.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
