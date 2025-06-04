@@ -84,7 +84,7 @@
         
         .calculator-card i {
             font-size: 48px;
-            color: var(--primary);
+            color: var(--secondary);
             margin-bottom: 15px;
         }
         

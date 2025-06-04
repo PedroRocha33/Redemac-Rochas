@@ -1,0 +1,159 @@
+/* Container responsivo para Google Maps */
+.map-responsive {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+}
+
+/* Ajustes para diferentes tamanhos de tela */
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .map-responsive {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-bottom: 50%; /* Proporção mais baixa para desktop */
+    }
+}
+
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .map-responsive {
+        padding-bottom: 60%; /* Proporção intermediária */
+        border-radius: 6px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .map-responsive {
+        padding-bottom: 75%; /* Proporção mais alta para mobile */
+        border-radius: 4px;
+        margin: 0 1rem; /* Margem nas laterais */
+    }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    .map-responsive {
+        padding-bottom: 85%; /* Quase quadrado */
+        margin: 0 0.5rem;
+    }
+}
+
+/* Orientação landscape em mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .map-responsive {
+        padding-bottom: 45%; /* Mais baixo em landscape */
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero {
+        height: 400px;
+    }
+    
+    .hero-content {
+        margin-left: 30px;
+        max-width: 500px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-bar {
+        width: 100%;
+        max-width: none;
+        margin: 15px 0;
+    }
+    
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero {
+        height: 350px;
+    }
+    
+    .hero-content {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .top-bar .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .hero {
+        height: 300px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .testimonial-card {
+        min-width: 280px;
+    }
+}
+
+/* Para telas menores, ajuste a exibição */
+@media (max-width: 768px) {
+    .products {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px; /* Espaço para a barra de rolagem */
+    }
+    
+    .product-card {
+        scroll-snap-align: start;
+    }
+}

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="/assets/themes/nav.css">
     <link rel="stylesheet" href="/assets/themes/footer.css">
+    <link rel="stylesheet" href="/assets/responsividade.css">
     <style>
         /* Contact Specific Styles */
         .contact-grid {
@@ -77,7 +78,7 @@
 
         .contact-card i {
             font-size: 2.5rem;
-            color: #e74c3c;
+            color: #00a896;
             margin-bottom: 1rem;
         }
 
@@ -92,7 +93,7 @@
         }
 
         .contact-card a {
-            color: #e74c3c;
+            color: #000000;
             text-decoration: none;
         }
 
@@ -242,6 +243,24 @@
             
         </div>
 
+        <!-- NOVO: Botão mobile -->
+        <button class="mobile-menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="nav-menu">
+            <!-- seus nav-items aqui -->
+        </nav>
+        
+    </div>
+    
+    <!-- NOVO: Overlay -->
+    <div class="mobile-overlay"></div>
+
+            </div>
+
     </div>
 
 
@@ -302,16 +321,15 @@
                     <div class="contact-card">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Nosso Endereço</h3>
-                        <p>Rua das Construções, 123</p>
-                        <p>Centro - São Paulo/SP</p>
+                        <p>Rua da barca, 519</p>
+                        <p>Barreto - Triunfo/RS</p>
                         <p>CEP: 01234-567</p>
                     </div>
                     
                     <div class="contact-card">
                         <i class="fas fa-phone"></i>
                         <h3>Telefones</h3>
-                        <p><a href="tel:+551134567890">(11) 3456-7890</a></p>
-                        <p><a href="tel:+5511987654321">(11) 98765-4321</a></p>
+                        <p><a href="tel:+551134567890">(51) 3654-7164</a></p>
                         <p>Segunda a Sexta: 8h às 18h</p>
                         <p>Sábado: 8h às 12h</p>
                     </div>
@@ -333,7 +351,7 @@
         <div class="container" style="text-align: center;">
             <h2 style="color: #2c3e50; margin-bottom: 1rem;">Atendimento via WhatsApp</h2>
             <p style="color: #666; margin-bottom: 2rem;">Para um atendimento mais rápido, fale conosco pelo WhatsApp!</p>
-            <a href="https://wa.me/5511987654321" class="btn btn-whatsapp" target="_blank">
+            <a href="https://wa.link/vm4nio" class="btn btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
             </a>
         </div>
@@ -349,8 +367,7 @@
             
             <div class="map-container">
                 <div style="text-align: center;">
-                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: #e74c3c; margin-bottom: 1rem;"></i>
-                    <p style="font-size: 0.9rem; color: #999;">Rua das Construções, 123 - Centro - São Paulo/SP</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4257.191481456598!2d-51.7122095!3d-29.8696733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951b9493d2fe476f%3A0x1d8f9fcc69e6380a!2sRedemac%20Rochas!5e1!3m2!1sen!2sbr!4v1748959586055!5m2!1sen!2sbr" width="1160" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -363,47 +380,97 @@
             <p style="color: #666; margin-bottom: 2rem;">Fique por dentro das novidades, promoções e dicas de construção!</p>
             
             <div class="social-links">
-                <a href="#" class="social-link facebook" target="_blank">
+                <a href="https://www.facebook.com/redemac.rochas.triunfo/?locale=pt_BR" class="social-link facebook" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="social-link instagram" target="_blank">
+                <a href="https://www.instagram.com/redemac.rochas/" class="social-link instagram" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-link youtube" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                </a>
+            
             </div>
         </div>
     </section>
 
-    <script>
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+<footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>Sobre a Redemac Rochas</h3>
+                        <p>Somos uma loja de materiais de construção comprometida com a qualidade dos produtos e excelência no atendimento. Há mais de 15 anos no mercado, ajudamos a construir sonhos.</p>
+                        <div class="footer-socials">
+                            <a href="https://www.facebook.com/redemac.rochas.triunfo/?locale=pt_BR"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/redemac.rochas/"><i class="fab fa-instagram"></i></a>
+                            <!-- <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
+                        </div>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Links Rápidos</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="sobre.html">Sobre Nós</a></li>
+                            <li><a href="ecommerce.html">Produtos</a></li>
+                            <li><a href="#">Serviços</a></li>
+                            <li><a href="#">Projetos</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Categorias</h3>
+                        <ul>
+                            <li><a href="ecommerce.html">Materiais Básicos</a></li>
+                            <li><a href="ecommerce.html">Acabamentos</a></li>
+                            <li><a href="ecommerce.html">Elétrica</a></li>
+                            <li><a href="ecommerce.html">Hidráulica</a></li>
+                            <li><a href="ecommerce.html">Ferramentas</a></li>
+                            <li><a href="ecommerce.html">Tintas</a></li>
+                            <li><a href="ecommerce.html">Piscinas</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Contato</h3>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <p>Rua da barca, 519</p>
+                                    <p>Barreto - Triunfo/RS</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <p>(51) 3654-7164</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <p>contato@redemacrochas.com.br</p>
+                                    <p>vendas@redemacrochas.com.br</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <p>Segunda a Sexta: 8h às 18h</p>
+                                    <p>Sábado: 8h às 12h</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.name || !data.email || !data.subject || !data.message) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
-            
-            // Simulate form submission
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            this.reset();
-        });
-
-        // Phone mask
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.replace(/(\d{2})(\d)/, '($1) $2');
-            value = value.replace(/(\d{4})(\d)/, '$1-$2');
-            value = value.replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3');
-            e.target.value = value;
-        });
-    </script>
+            <div class="copyright">
+                <div class="container">
+                    <p>&copy; 2025 Redemac Rochas. Todos os direitos reservados. Desenvolvido por <a href="https://pedrorochasolucoes.com.br/">Pedro Rocha</a></p>
+                </div>
+            </div>
+        </footer>
+        <script src="/scripts/responsividade.js"></script>
 </body>
 </html>
