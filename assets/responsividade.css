@@ -157,3 +157,208 @@
         scroll-snap-align: start;
     }
 }
+
+
+    /* Menu hambúrguer */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Animação do hambúrguer quando ativo */
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Menu mobile */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .mobile-menu-content {
+            background-color: white;
+            width: 280px;
+            height: 100%;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu.active .mobile-menu-content {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-item {
+            margin-bottom: 10px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            background-color: #f0f0f0;
+            color: #2563eb;
+        }
+
+        .mobile-nav-link.active {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .mobile-nav-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Overlay para fechar o menu */
+        .mobile-menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 280px;
+            right: 0;
+            bottom: 0;
+            background-color: transparent;
+        }
+
+        /* Media queries para responsividade */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .header-content {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu-content {
+                width: 100%;
+            }
+
+            .mobile-menu-overlay {
+                display: none;
+            }
+
+            .header-content {
+                height: 60px;
+            }
+
+            .mobile-menu {
+                top: 60px;
+                height: calc(100vh - 60px);
+            }
+
+            .logo {
+                height: 35px;
+            }
+        }
+
+        /* Container responsivo para Google Maps */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+}
+
+/* Ajustes para diferentes tamanhos de tela */
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .map-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-bottom: 50%; /* Proporção mais baixa para desktop */
+    }
+}
+
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .map-container {
+        padding-bottom: 60%; /* Proporção intermediária */
+        border-radius: 6px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .map-container {
+        padding-bottom: 75%; /* Proporção mais alta para mobile */
+        border-radius: 4px;
+        margin: 0 1rem; /* Margem nas laterais */
+    }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+    .map-container {
+        padding-bottom: 85%; /* Quase quadrado */
+        margin: 0 0.5rem;
+    }
+}
+
+/* Orientação landscape em mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .map-container {
+        padding-bottom: 45%; /* Mais baixo em landscape */
+    }
+}
+
